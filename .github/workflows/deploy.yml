@@ -1,4 +1,29 @@
-...
+name: Deploy React 3D Portfolio to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fix for Vite on Node 22
+        run: npm rebuild esbuild
+
       - name: Build project
         run: npm run build
 
