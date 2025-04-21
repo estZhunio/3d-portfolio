@@ -27,6 +27,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Ver contenido de dist
+        run: |
+          echo "Contenido de ./dist:"
+          ls -la ./dist
+
       - name: Login to Azure
         uses: azure/login@v1
         with:
